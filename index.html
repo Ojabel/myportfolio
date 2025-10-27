@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abel Ahmed Ojimah - Embedded Systems & Software Engineer</title>
+    <meta name="description" content="Portfolio of Abel Ahmed Ojimah, Embedded Systems & Full-Stack Developer specializing in IoT, firmware, and end-to-end solutions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#008751">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #008751; /* Nigerian green */
+            --primary-dark: #005a34;
+            --primary-light: #e1f5ec;
+            --secondary: #FFFFFF; /* Nigerian white */
+            --accent: #008751;
+            --light: #f0f0f0;
+            --dark: #1a1a1a;
+            --dark-light: #333;
+            --gray: #666666;
+            --gray-light: #f8fafc;
+            --shadow: 0 3px 10px rgba(0,0,0,0.08);
+            --shadow-hover: 0 10px 30px rgba(0,0,0,0.12);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Navigation */
+        nav.topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(6px);
+            background: rgba(255,255,255,0.85);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: var(--transition);
+        }
+
+        .topbar.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .topbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        /* Mobile nav */
+        .hamburger { 
+            display: none; 
+            width: 44px; 
+            height: 44px; 
+            border-radius: 8px; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            background: transparent; 
+            border: 0;
+            position: relative;
+            z-index: 70;
+        }
+        
+        .hamburger .bar { 
+            width: 20px; 
+            height: 2px; 
+            background: var(--dark); 
+            display: block; 
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .hamburger .bar::before,
+        .hamburger .bar::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: var(--dark);
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .hamburger .bar::before {
+            top: -6px;
+        }
+        
+        .hamburger .bar::after {
+            top: 6px;
+        }
+        
+        .hamburger.active .bar {
+            background: transparent;
+        }
+        
+        .hamburger.active .bar::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active .bar::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        .mobile-menu { 
+            display: none; 
+            position: fixed; 
+            right: 12px; 
+            left: 12px; 
+            top: 64px; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
+            padding: 12px; 
+            z-index: 60; 
+            flex-direction: column; 
+            gap: 8px; 
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--dark); 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            transition: var(--transition);
+        }
+        
+        .mobile-menu a:hover { 
+            background: var(--primary-light); 
+            color: var(--primary); 
+        }
+
+        /* Fluid images */
+        img.project-image, .profile-img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            background: rgba(0,135,81,0.08); 
+            color: var(--primary); 
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 80%;
+        }
+
+        /* Buttons & small UI touches */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(0,135,81,0.12);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover,
+        .btn:focus { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px rgba(0,135,81,0.16); 
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Project overlay */
+        .project-card { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .project-card .overlay {
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: center; 
+            padding: 18px; 
+            opacity: 0; 
+            transition: var(--transition);
+        }
+
+        .project-card:hover .overlay { 
+            opacity: 1; 
+        }
+
+        .overlay .view-btn { 
+            background: rgba(255,255,255,0.95); 
+            color: var(--dark); 
+            padding: 10px 16px; 
+            border-radius: 999px; 
+            font-weight: 700; 
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .overlay .view-btn:hover,
+        .overlay .view-btn:focus {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Back to top */
+        #backToTop { 
+            position: fixed; 
+            right: 18px; 
+            bottom: 20px; 
+            width: 46px; 
+            height: 46px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: var(--primary); 
+            color: white; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18); 
+            cursor: pointer; 
+            opacity: 0; 
+            transform: translateY(10px); 
+            transition: var(--transition); 
+            z-index: 60; 
+            border: none;
+            font-size: 1.2rem;
+        }
+        
+        #backToTop.show { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        #backToTop:hover,
+        #backToTop:focus {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Project modal */
+        .modal-backdrop { 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.6); 
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 120; 
+            padding: 20px; 
+        }
+        
+        .modal-backdrop.show { 
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal { 
+            background: white; 
+            border-radius: 12px; 
+            max-width: 900px; 
+            width: 100%; 
+            max-height: 90vh; 
+            overflow: auto; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header { 
+            padding: 18px 20px; 
+            border-bottom: 1px solid #eee; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky;
+            top: 0;
+            background: white;
+            border-radius: 12px 12px 0 0;
+            z-index: 1;
+        }
+        
+        .modal-body { 
+            padding: 20px; 
+        }
+        
+        .modal-body p { 
+            color: var(--dark); 
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-tech { 
+            display: flex; 
+            gap: 8px; 
+            flex-wrap: wrap; 
+            margin-top: 12px;
+        }
+        
+        .modal-tech .tag { 
+            background: var(--primary-light); 
+            color: var(--dark); 
+            padding: 6px 10px; 
+            border-radius: 999px; 
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .modal-close { 
+            background: transparent;
+            border: 0;
+            font-size: 20px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover,
+        .modal-close:focus {
+            background: var(--light);
+        }
+        
+        /* Enhanced Modal Styles */
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .modal-gallery img {
+            width: 100%;
+            height: auto; /* allow full image height */
+            max-height: 60vh; /* prevent images from exceeding modal height */
+            object-fit: contain; /* show the whole image without cropping */
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .modal-gallery img:hover {
+            transform: scale(1.02);
+        }
+        
+        .modal-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .modal-features, .modal-challenges {
+            background: var(--gray-light);
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+        
+        .modal-features h4, .modal-challenges h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .modal-features ul, .modal-challenges ul {
+            padding-left: 20px;
+        }
+        
+        .modal-features li, .modal-challenges li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .modal-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .modal-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--primary-light);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .modal-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Video Player Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            /* allow internal scrolling when video is taller than viewport */
+            overflow: auto;
+            max-height: 60vh; /* keep video container constrained inside modal */
+            box-shadow: var(--shadow);
+        }
+        
+        .video-player {
+            width: 100%;
+            height: auto;
+            max-height: calc(60vh - 60px); /* leave space for header/controls */
+            object-fit: contain; /* show whole frame without cropping */
+            display: block;
+            background: #000;
+            margin: 0 auto;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            max-height: 60vh;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-placeholder:hover {
+            transform: scale(1.01);
+        }
+        
+        .video-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .video-placeholder h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .video-placeholder p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .video-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+        
+        .video-controls button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .video-controls button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .video-progress {
+            flex-grow: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin: 0 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .video-progress-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            width: 0%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .header-text {
+            margin-left: 40px;
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+        
+        .title {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .header-text > p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+        
+        .contact-card {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .contact-pill:hover,
+        .contact-pill:focus {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nigeria-flag {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+        .graduation-badge {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        section:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        /* Summary Section */
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Experience & Education Styles */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--light);
+        }
+        
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -36px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .position, .degree {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .company, .institution {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            color: var(--gray);
+            font-style: italic;
+            background-color: var(--light);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .description {
+            margin-top: 10px;
+        }
+        
+        .description ul {
+            padding-left: 20px;
+        }
+        
+        .description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: var(--gray-light);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .skill-category.hardware {
+            border-left-color: var(--primary-dark);
+        }
+        
+        .skill-category.debugging {
+            border-left-color: #e74c3c;
+        }
+        
+        .skill-category.software {
+            border-left-color: #3498db;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .skill-category h3 i {
+            margin-right: 8px;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .skill-name {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .skill-name i {
+            color: var(--primary);
+            margin-right: 8px;
+            width: 20px;
+        }
+        
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background-color: var(--light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .project-header {
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .project-date {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-description {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tech-tag {
+            background-color: var(--primary-light);
+            color: var(--dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .project-type {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        /* Certifications Section */
+        .certifications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--gray-light);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .cert-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .cert-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .cert-details p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Languages */
+        #languages ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+        }
+        
+        #languages li {
+            background: var(--primary-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 0.9rem;
+            background-color: var(--primary);
+        }
+        
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+        
+        /* Print styles */
+        @media print {
+            .topbar, #backToTop, .btn {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                margin: 20px 0;
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            
+            .contact-pill {
+                background: transparent;
+                border: 1px solid var(--dark);
+                color: var(--dark);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-card {
+                justify-content: center;
+            }
+            
+            .skills-container, .projects-grid, .certifications-list {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links { 
+                display: none; 
+            }
+            
+            .hamburger { 
+                display: flex; 
+            }
+            
+            .mobile-menu { 
+                right: 12px; 
+                left: 12px; 
+                top: 64px; 
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .title {
+                font-size: 1.2rem;
+            }
+            
+            .modal-content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-placeholder {
+                height: 200px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            h1 { 
+                font-size: 2.8rem; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            .title { 
+                font-size: 1.1rem; 
+            }
+            
+            .project-image { 
+                height: 160px; 
+            }
+            
+            .profile-img { 
+                width: 140px; 
+                height: 140px; 
+            }
+            
+            .container { 
+                padding: 0 12px; 
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .contact-pill {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            
+            .btn {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
+            
+            .video-placeholder {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Top Navigation -->
+    <nav class="topbar" id="topbar">
+        <div class="container">
+            <a href="#" class="brand" aria-label="Home">
+                <img src="images/image.png" alt="Abel Ahmed Ojimah logo" style="width:36px;height:36px;border-radius:8px;border:2px solid white;object-fit:cover"> 
+                Abel A. Ojimah
+            </a>
+            <div style="display:flex;align-items:center;gap:12px">
+                <div class="nav-links">
+                    <a href="#summary">Summary</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                </div>
+                <a class="btn" href="mailto:abelahmed1234@gmail.com" aria-label="Contact via email">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <button class="hamburger" aria-label="Toggle menu" id="hamburgerBtn" aria-expanded="false">
+                    <span class="bar"></span>
+                </button>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#summary">Summary</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a class="btn" href="mailto:abelahmed1234@gmail.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="images/image.png" alt="Abel Ahmed Ojimah" class="profile-img">
+                <div class="header-text">
+                    <h1>Abel Ahmed Ojimah <span class="nigeria-flag" aria-label="Nigerian">🇳🇬</span> <span class="graduation-badge">Graduated Sep 2024</span></h1>
+                    <p class="title">Embedded Systems & Full-Stack Developer</p>
+                    <p>Expert in embedded systems, IoT, firmware, and full-stack applications. Building reliable end-to-end solutions.</p>
+
+                    <div class="contact-card">
+                        <a class="contact-pill" href="mailto:abelahmed1234@gmail.com" aria-label="Send email to abelahmed1234@gmail.com">
+                            <i class="fas fa-envelope"></i> abelahmed1234@gmail.com
+                        </a>
+                        <a class="contact-pill" href="tel:+2348167085247" aria-label="Call +234 8167085247">
+                            <i class="fas fa-phone"></i> +234 8167085247
+                        </a>
+                        <a class="contact-pill" href="tel:+2349077332016" aria-label="Call +234 9077332016">
+                            <i class="fas fa-phone"></i> +234 9077332016
+                        </a>
+                        <span class="contact-pill" aria-label="Location: Lagos, Nigeria">
+                            <i class="fas fa-map-marker-alt"></i> Kaduna, Nigeria
+                        </span>
+                        <a class="contact-pill" href="https://www.linkedin.com/in/abel-oj-b061b7186/" target="_blank" rel="noopener" aria-label="Visit LinkedIn profile">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a class="contact-pill" href="https://github.com/abelahmed" target="_blank" rel="noopener" aria-label="Visit GitHub profile">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container">
+        <!-- Professional Summary -->
+        <section id="summary">
+            <h2><i class="fas fa-user"></i> Professional Summary</h2>
+            <p class="summary-text">
+                Recent AFIT graduate (September 2024) with a BSc in Computer Science (Second Class Upper) and completed NYSC. 
+                Versatile engineer with expertise in embedded systems, IoT development, troubleshooting, debugging, and full-stack 
+                software development. Proven ability to design, develop, and debug complex hardware and software systems. 
+                Experienced in creating end-to-end solutions from concept to deployment, with strong problem-solving skills 
+                and attention to detail. Seeking opportunities to apply technical skills in embedded systems, IoT, and software 
+                development roles.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <p class="degree">BSc Computer Science (Second Class Upper Division)</p>
+                            <p class="institution">Air Force Institute of Technology (AFIT), Kaduna</p>
+                        </div>
+                        <p class="date">2020 - 2024</p>
+                    </div>
+                    <div class="description">
+                        <p>Graduated September 2024 with Second Class Upper Division.</p>
+                        <div class="edu-grid">
+                            <div>
+                                <h4>Final Year Project</h4>
+                                <p><strong>"Real-time Multiple Heart Monitoring System with Centralized Dashboard"</strong></p>
+                                <p>Designed and implemented a multi-patient heart monitoring solution combining wearable sensors, an ESP32-based telemetry layer, and a responsive React dashboard for real-time visualization. Responsibilities included hardware prototyping, firmware (C/C++) development, WebSocket-based data streaming, and backend integration for data persistence and analytics.</p>
+                                <p><strong>Technologies:</strong> ESP32, C/C++, React, Node.js, WebSocket, MongoDB</p>
+                            </div>
+                            <div>
+                                <h4>Key Modules & Coursework</h4>
+                                <ul>
+                                    <li>Embedded Systems & Microcontroller Programming</li>
+                                    <li>Digital Electronics & Circuits</li>
+                                    <li>Software Engineering & System Design</li>
+                                    <li>Database Systems (MySQL, MongoDB)</li>
+                                    <li>Computer Networks & Communication Protocols</li>
+                                    <li>Algorithms & Data Structures</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h4>Honors & Activities</h4>
+                        <ul>
+                            <li>AFIT Project Innovation Award (2023) — recognized for practical impact and technical excellence.</li>
+                            <li>Team Lead, AFIT Embedded Systems Lab — led a team of 3–5 students on capstone and lab projects, mentoring peers in hardware debugging and firmware development.</li>
+                            <li>Organized hands-on workshops on PCB prototyping and microcontroller programming.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <p class="degree">National Youth Service Corps (NYSC)</p>
+                            <p class="institution">Completed</p>
+                        </div>
+                        <p class="date">2024</p>
+                    </div>
+                    <div class="description">
+                        <p>Successfully completed the mandatory one-year national service program</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills">
+            <h2><i class="fas fa-cogs"></i> Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category hardware">
+                    <h3><i class="fas fa-microchip"></i> Hardware & Embedded Systems</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Microcontrollers (ARM Cortex-M, ESP32, Arduino, STM32, PIC)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 94%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> PCB Design (Altium, EasyEDA, Protues)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 88%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Circuit Design & Analysis
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Sensor Integration & Signal Conditioning
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 92%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> IoT Protocols (GSM, LoRa, BLE, Wi-Fi, Zigbee)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 89%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category debugging">
+                    <h3><i class="fas fa-bug"></i> Troubleshooting & Debugging</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Hardware Debugging (Oscilloscope, Logic Analyzer)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 91%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Firmware Debugging (JTAG, SWD)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Software Debugging 
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 88%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> System Integration & Testing
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 92%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category software">
+                    <h3><i class="fas fa-code"></i> Software & Web Development</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Frontend (HTML5, CSS3, JavaScript, React)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 87%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Backend (Node.js, Python, PHP)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Database Systems (MySQL, MongoDB, PostgreSQL)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 83%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> Embedded Programming (C/C++, MicroPython, Arduino)
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 95%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-check"></i> API Development & Integration
+                            </div>
+                            <div class="skill-level"><div class="skill-fill" style="width: 86%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Experience -->
+        <section id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Project Portfolio</h2>
+            <div class="projects-grid">
+                <!-- Professional Products -->
+                <div class="project-card" data-project-id="heart-monitoring">
+                    <img src="images/image.png" alt="Heart Monitoring System" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" href="#" data-project-id="heart-monitoring" aria-label="View Heart Monitoring System project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Real-time Multiple Heart Monitoring System <span class="project-type">Professional Product</span></div>
+                        <div class="project-date">Healthcare IoT | 2024</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Developed a professional-grade centralized system for real-time monitoring of multiple patients' 
+                            heart rates. Integrated hardware sensors with a responsive web dashboard. Debugged and optimized 
+                            data transmission protocols to ensure reliable performance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">React Dashboard</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Real-time Data</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-project-id="smart-power">
+                    <img src="images/stripp.jpg" alt="Smart Power Outlet" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" href="#" data-project-id="smart-power" aria-label="View Smart Power Outlet project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Smart Power Outlet with Energy Monitoring <span class="project-type">Professional Product</span></div>
+                        <div class="project-date">Energy Management | 2023</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Designed and prototyped a commercial smart power strip with individual outlet control 
+                            and real-time energy monitoring. Developed the firmware and web application for remote 
+                            control and analytics. Debugged current sensing circuitry for accurate measurements.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP8266</span>
+                            <span class="tech-tag">Current Sensors</span>
+                            <span class="tech-tag">React Dashboard</span>
+                            <span class="tech-tag">Energy Analytics</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Projects: Surveillance, Biometric Access, Car Tracking (realtime+geofence), Water Pump -->
+               <!-- <div class="project-card" data-project-id="surveillance">
+                    <img src="images/camera.jpg" alt="Surveillance Camera with LD2410B" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" data-project-id="surveillance" href="#" aria-label="View Surveillance Camera project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Surveillance Camera with LD2410B mmW Sensor <span class="project-type">Professional Product</span></div>
+                        <div class="project-date">Security IoT | 2024</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Integrated LD2410B millimeter-wave sensor with camera for motion detection, people counting and radar-assisted tracking. Edge processing reduces false positives and enables low-light/obscured detection.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">LD2410B</span>
+                            <span class="tech-tag">Camera</span>
+                            <span class="tech-tag">Edge AI</span>
+                            <span class="tech-tag">RTSP</span>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="project-card" data-project-id="biometric">
+                    <img src="images/access.jpg" alt="Biometric Smart Access" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" data-project-id="biometric" href="#" aria-label="View Biometric Access Control project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Biometric Smart Access Control (Fingerprint + RFID) <span class="project-type">Commercial Prototype</span></div>
+                        <div class="project-date">Access Control | 2023</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Designed an access control system combining fingerprint sensor and RFID authentication with secure logging and remote admin via a web dashboard. Failover to RFID for convenience and fingerprint for high-security zones.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Fingerprint</span>
+                            <span class="tech-tag">RFID</span>
+                            <span class="tech-tag">Encrypted Logs</span>
+                            <span class="tech-tag">Admin Web UI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project-id="car-tracking">
+                    <img src="images/car.jpg" alt="Smart Car Tracking & Geofencing" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" data-project-id="car-tracking" href="#" aria-label="View Car Tracking System project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Smart Car Tracking with Real-time Web UI, Immobilizer & Geofencing <span class="project-type">Commercial Product</span></div>
+                        <div class="project-date">Vehicle IoT | 2024</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Real-time GPS tracking with live map UI, push alerts on geofence breach, remote immobilizer, and power-optimized hardware for extended battery life.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">GPS</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Geofencing</span>
+                            <span class="tech-tag">GSM/4G</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project-id="water-pump">
+                    <img src="images/waterp.jpg" alt="Smart Water Pump System" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" data-project-id="water-pump" href="#" aria-label="View Water Pump System project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Smart Water Pump System <span class="project-type">Agritech Prototype</span></div>
+                        <div class="project-date">IoT | 2023</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Automated water pump control with soil moisture sensing, scheduled irrigation, and remote monitoring via dashboard. Low-power design and safety interlocks included.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Moisture Sensor</span>
+                            <span class="tech-tag">Relay Control</span>
+                            <span class="tech-tag">Scheduler</span>
+                            <span class="tech-tag">Remote Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project-id="home-security">
+                    <img src="images/camera.jpg" alt="Home Security System" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" href="#" data-project-id="home-security" aria-label="View Home Security System project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Home Surveillance & Security System <span class="project-type">Student Project</span></div>
+                        <div class="project-date">Security IoT | 2022</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Course project creating a comprehensive home security system with motion detection, 
+                            door/window sensors, and camera integration. Developed the full-stack application 
+                            with real-time alerts. Debugged sensor integration and network connectivity issues.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP32 CAM</span>
+                            <span class="tech-tag">LD2410B Sensors</span>
+                            <span class="tech-tag">Python Backend</span>
+                            <span class="tech-tag">React Frontend</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project-id="smart-home">
+                    <img src="images/sstrip.png" alt="Smart Home Automation" class="project-image">
+                    <div class="overlay">
+                        <a class="view-btn" href="#" data-project-id="smart-home" aria-label="View Smart Home Automation project details">
+                            View Project
+                        </a>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-title">Smart Home Automation with scheduling <span class="project-type">Student Project</span></div>
+                        <div class="project-date">Home Automation | 2023</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Final year project developing a comprehensive smart home automation system integrating 
+                            lighting, climate control, security, and entertainment systems. Created custom mobile/web applications. Debugged complex integration issues between 
+                            multiple subsystems.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Home Assistant</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section id="experience">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <p class="position">Freelance Embedded Systems & Software Developer</p>
+                            <p class="company">Various Clients</p>
+                        </div>
+                        <p class="date">2022 - 2024</p>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Developed commercial IoT products including heart monitoring systems and vehicle tracking solutions</li>
+                            <li>Designed and implemented full-stack web applications for device management and data visualization</li>
+                            <li>Troubleshot and debugged complex hardware-software integration issues in deployed systems</li>
+                            <li>Created responsive web interfaces using React, Node.js, and modern CSS frameworks</li>
+                            <li>Optimized system performance through code profiling and hardware debugging techniques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <p class="position">Student Project Team Lead & Technical Troubleshooter</p>
+                            <p class="company">AFIT Embedded Systems Lab</p>
+                        </div>
+                        <p class="date">2021 - 2024</p>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Led teams of 3-5 students in developing complex embedded systems and software projects</li>
+                            <li>Specialized in debugging hardware-software integration issues and system troubleshooting</li>
+                            <li>Mentored junior students in debugging techniques using oscilloscopes, logic analyzers, and software tools</li>
+                            <li>Developed web applications for project management and technical documentation</li>
+                            <li>Implemented automated testing frameworks for both hardware and software components</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Debugging & Troubleshooting Highlight -->
+        <section id="debugging">
+            <h2><i class="fas fa-bug"></i> Troubleshooting & Debugging Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-search"></i> Problem Identification</h3>
+                    <ul class="skill-list">
+                        <li>Systematic approach to isolating hardware vs. software issues</li>
+                        <li>Experience with oscilloscopes, logic analyzers, and multimeters</li>
+                        <li>Protocol analysis (SPI, I2C, UART, USB) for communication debugging</li>
+                        <li>Root cause analysis for intermittent and complex system failures</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Debugging Tools & Techniques</h3>
+                    <ul class="skill-list">
+                        <li>Software profiling and performance optimization</li>
+                        <li>Log analysis and real-time system monitoring</li>
+                        <li>Automated testing and validation frameworks</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Software Debugging</h3>
+                    <ul class="skill-list">
+                        <li>Browser DevTools for web application debugging</li>
+                        <li>Backend API testing with Postman and custom scripts</li>
+                        <li>Database query optimization and performance tuning</li>
+                        <li>Memory leak detection and resource management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications">
+            <h2><i class="fas fa-award"></i> Certifications & Achievements</h2>
+            <div class="certifications-list">
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>AWS Certified IoT Specialty</h3>
+                        <p>Amazon Web Services | 2023</p>
+                    </div>
+                </div>
+                
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Embedded Systems Debugging Certification</h3>
+                        <p>Arm Education | 2023</p>
+                    </div>
+                </div>
+                
+                <div class="cert-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>AFIT Project Innovation Award</h3>
+                        <p>Air Force Institute of Technology | 2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section id="languages">
+            <h2><i class="fas fa-language"></i> Languages</h2>
+            <ul>
+                <li>English (Fluent)</li>
+                <li>Igala (Native)</li>
+                <li>Pidgin (Fluent)</li>
+                <li>Hausa (Basic)</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Abel Ahmed Ojimah. All rights reserved.</p>
+            <p>Embedded Systems Engineer | Full-Stack Developer | Troubleshooting Specialist</p>
+        </div>
+    </footer>
+
+    <!-- Project modal -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h3 id="modalTitle">Project</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Project data for modal content
+        const projectData = {
+            "heart-monitoring": {
+                title: "Real-time Multiple Heart Monitoring System",
+                description: "A professional-grade centralized system for real-time monitoring of multiple patients' heart rates. This project involved designing and implementing both the hardware sensors and the responsive web dashboard for healthcare professionals.",
+                images: [
+                    "images/project1.svg",
+                    "images/project1-2.jpg",
+                ],
+                video: {
+                    url: "videos/heart-monitoring-demo.mp4",
+                    thumbnail: "images/heart-monitoring-thumb.jpg",
+                },
+                technologies: ["ESP32", "React Dashboard", "WebSocket", "Real-time Data", "C++", "Node.js", "MongoDB"],
+                features: [
+                    "Real-time heart rate monitoring for multiple patients",
+                    "Responsive web dashboard with live data visualization",
+                    "Secure data transmission with encryption",
+                    "Alert system for abnormal heart rate detection",
+                    "Historical data analysis and reporting"
+                ],
+                challenges: [
+                    "Ensuring reliable data transmission in hospital environments",
+                    "Optimizing power consumption for portable devices",
+                    "Integrating multiple sensor types with consistent data formats",
+                    "Maintaining data accuracy during wireless transmission"
+                ],
+                /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "smart-power": {
+                title: "Smart Power Outlet with Energy Monitoring",
+                description: "A commercial smart power strip with individual outlet control and real-time energy monitoring. This system allows users to remotely control devices and monitor energy consumption through a web application.",
+                images: [
+                    "images/stripp.jpg",
+                    "images/smart-power-2.jpg",
+                ],
+              
+                technologies: ["ESP8266", "Current Sensors", "React Dashboard", "Energy Analytics", "REST API", "Python"],
+                features: [
+                    "Individual outlet control via web interface",
+                    "Real-time energy consumption monitoring",
+                    "Scheduled power on/off for energy savings",
+                    "Energy usage analytics and reporting",
+                    "Mobile-responsive design"
+                ],
+                challenges: [
+                    "Accurate current sensing with varying loads",
+                    "Ensuring safe operation with high-power devices",
+                    "Creating intuitive user interface for complex controls",
+                    "Optimizing Wi-Fi connectivity in different environments"
+                ],
+                 /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "surveillance": {
+                title: "Surveillance Camera with LD2410B mmW Sensor",
+                description: "An advanced security system integrating LD2410B millimeter-wave sensors with cameras for enhanced motion detection and tracking. This system reduces false positives and enables detection in challenging conditions.",
+                images: [
+                    "images/camera.jpg",
+                    "images/surveillance-2.jpg",
+                ],
+                video: {
+                    url: "videos/surveillance-demo.mp4",
+                    thumbnail: "images/surveillance-thumb.jpg",
+                },
+                technologies: ["LD2410B", "Camera", "Edge AI", "RTSP", "ESP32", "Python"],
+                features: [
+                    "Millimeter-wave radar for accurate motion detection",
+                    "Camera integration for visual verification",
+                    "Edge AI processing for reduced false positives",
+                    "Low-light and obscured condition detection",
+                    "People counting and tracking capabilities"
+                ],
+                challenges: [
+                    "Integrating radar data with camera feeds",
+                    "Reducing power consumption for 24/7 operation",
+                    "Optimizing detection algorithms for various environments",
+                    "Ensuring data privacy and security"
+                ],
+                 /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "biometric": {
+                title: "Biometric Smart Access Control (Fingerprint + RFID)",
+                description: "A secure access control system combining fingerprint authentication with RFID technology. This system provides multiple authentication methods with secure logging and remote administration.",
+                images: [
+                    "images/access.jpg",
+                    "images/bioacc2.jpg",
+                ],
+                video: {
+                    url: "videos/accesscontrol.mp4",
+                    thumbnail: "images/biometric-thumb.jpg",
+                },
+                technologies: ["Fingerprint Sensor", "RFID", "Encrypted Logs", "Admin Web UI", "ESP32", "React"],
+                features: [
+                    "Dual authentication (fingerprint + RFID)",
+                    "Secure encrypted logging of access attempts",
+                    "Remote administration via web dashboard",
+                    "Failover to RFID for convenience",
+                    "Real-time access notifications"
+                ],
+                challenges: [
+                    "Ensuring fast and accurate fingerprint recognition",
+                    "Creating a secure communication protocol",
+                    "Designing an intuitive admin interface",
+                    "Maintaining system reliability with power fluctuations"
+                ],
+                /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "car-tracking": {
+                title: "Smart Car Tracking with Real-time Web UI, Immobilizer & Geofencing",
+                description: "A comprehensive vehicle tracking system with real-time GPS monitoring, geofencing alerts, and remote immobilization capabilities. Designed for both personal and commercial vehicle security.",
+                images: [
+                    "images/car.jpg",
+                    "images/cartrack.jpg",
+                    "images/cartrack2.jpg"
+                ],
+                video: {
+                    url: "videos/cartrack.mp4",
+                    thumbnail: "images/car-tracking-thumb.jpg",
+                },
+                technologies: ["GPS", "WebSocket", "Geofencing", "GSM/4G", "React", "Node.js"],
+                features: [
+                    "Real-time GPS tracking with live map interface",
+                    "Custom geofencing with push notifications",
+                    "Remote vehicle immobilization",
+                    "Trip history and analytics",
+                    "Low-power design for extended battery life"
+                ],
+                challenges: [
+                    "Optimizing GPS accuracy in urban environments",
+                    "Minimizing power consumption for long-term operation",
+                    "Ensuring reliable cellular connectivity",
+                    "Creating responsive real-time web interface"
+                ],
+                  /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "water-pump": {
+                title: "Smart Water Pump System",
+                description: "An automated irrigation system with soil moisture sensing and remote monitoring capabilities. This system optimizes water usage while ensuring plants receive adequate hydration.",
+                images: [
+                    "images/waterp.jpg",
+                    "images/water2.jpg",
+                ],
+                video: {
+                    url: "videos/water.mp4",
+                    thumbnail: "images/water-pump-thumb.jpg",
+                },
+                technologies: ["Moisture Sensor", "Relay Control", "Scheduler", "Remote Monitoring", "ESP32", "React"],
+                features: [
+                    "Soil moisture-based automated irrigation",
+                    "Scheduled watering with customizable programs",
+                    "Remote monitoring and control via web dashboard",
+                    "Low-power design for solar operation",
+                    "Safety interlocks and fault detection"
+                ],
+                challenges: [
+                    "Calibrating moisture sensors for different soil types",
+                    "Creating reliable wireless communication in rural areas",
+                    "Designing power-efficient operation for solar systems",
+                    "Implementing fail-safe mechanisms for pump control"
+                ],
+                  /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "home-security": {
+                title: "Home Surveillance & Security System",
+                description: "A comprehensive home security system with multiple sensor types, camera integration, and real-time alerts. This student project demonstrates full-stack development capabilities.",
+                images: [
+                    "images/camera.jpg",
+                    "images/cam2.jpg",
+                ],
+                video: {
+                    url: "videos/camerademo.mp4",
+                    thumbnail: "images/home-security-thumb.jpg",
+                },
+                technologies: ["ESP32 CAM", "LD2410B Sensors", "Python Backend", "React Frontend", "WebSocket"],
+                features: [
+                    "Multi-sensor integration (motion, door/window, camera)",
+                    "Real-time alerts via mobile app and web dashboard",
+                    "Historical event logging and review",
+                    "Customizable alert thresholds and zones",
+                    "Remote arming/disarming capabilities"
+                ],
+                challenges: [
+                    "Integrating multiple sensor technologies",
+                    "Ensuring reliable network connectivity",
+                    "Creating an intuitive user interface",
+                    "Optimizing system performance with limited resources"
+                ],
+                  /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            },
+            "smart-home": {
+                title: "Smart Home Automation with Voice Assistant",
+                description: "A comprehensive smart home automation system integrating lighting, climate control, security.",
+                images: [
+                    "images/sstrip.png",
+                    "images/smt.png"
+                ],
+               /* video: {
+                    url: "videos/smart-home-demo.mp4",
+                    thumbnail: "images/smart-home-thumb.jpg",
+                },*/
+                technologies: ["Home Assistant", "React Native", "Node.js"],
+                features: [
+                    "Voice-controlled home automation",
+                    "Integration of multiple smart devices and protocols",
+                    "Custom mobile and web applications",
+                    "Energy usage monitoring and optimization",
+                    "Scene-based automation and scheduling"
+                ],
+                challenges: [
+                    "Integrating devices with different communication protocols",
+                    "Creating reliable voice recognition in noisy environments",
+                    "Designing an intuitive user interface for complex automation",
+                    "Ensuring system security and privacy"
+                ],
+                /*links: [
+                    { text: "View Demo", url: "#", icon: "fas fa-external-link-alt" }
+                ]*/
+            }
+        };
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading class to body
+            document.body.classList.add('loading');
+            
+            // Remove loading class after a short delay to simulate content loading
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+            }, 300);
+            
+            // Smooth scrolling for nav links
+            document.querySelectorAll('.nav-links a[href^="#"], .mobile-menu a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.createElement('button');
+            backToTop.id = 'backToTop';
+            backToTop.innerHTML = '↑';
+            backToTop.setAttribute('aria-label', 'Back to top');
+            document.body.appendChild(backToTop);
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            function toggleBackToTop() {
+                if (window.scrollY > 400) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleBackToTop);
+            toggleBackToTop();
+
+            // Navbar scroll effect
+            const topbar = document.getElementById('topbar');
+            
+            function toggleNavbarBackground() {
+                if (window.scrollY > 50) {
+                    topbar.classList.add('scrolled');
+                } else {
+                    topbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleNavbarBackground);
+            toggleNavbarBackground();
+
+            // Mobile menu toggle behavior
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            function toggleMobileMenu() {
+                const isOpen = mobileMenu.classList.contains('active');
+                mobileMenu.classList.toggle('active');
+                hamburgerBtn.classList.toggle('active');
+                hamburgerBtn.setAttribute('aria-expanded', !isOpen);
+                
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = isOpen ? '' : 'hidden';
+            }
+            
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && e.target !== hamburgerBtn && mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+
+                // Close when a link is clicked
+                mobileMenu.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        if (mobileMenu.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+                    });
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+            }
+
+            // Project modal handling
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            function openProjectModal(projectId) {
+                const project = projectData[projectId];
+                if (!project) return;
+                
+                modalTitle.innerText = project.title;
+                
+                // Build modal content
+                let modalContent = `
+                    <div class="modal-section">
+                        <p>${project.description}</p>
+                    </div>
+                `;
+                
+                // Add video section if available
+                if (project.video) {
+                    modalContent += `
+                        <div class="modal-section">
+                            <h4><i class="fas fa-play-circle"></i> Project Demo</h4>
+                            <div class="video-container">
+                                <div class="video-placeholder" data-video-url="${project.video.url}">
+                                    <i class="fas fa-play-circle"></i>
+                                    <h4>Watch Project Demo</h4>
+                                    <p>Duration: ${project.video.duration}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Add images
+                modalContent += `
+                    <div class="modal-section">
+                        <h4><i class="fas fa-images"></i> Project Images</h4>
+                        <div class="modal-gallery">
+                `;
+                
+                project.images.forEach(imgSrc => {
+                    modalContent += `<img src="${imgSrc}" alt="${project.title}">`;
+                });
+                
+                modalContent += `</div></div>`;
+                
+                // Add technologies
+                modalContent += `
+                    <div class="modal-section">
+                        <h4><i class="fas fa-tools"></i> Technologies Used</h4>
+                        <div class="modal-tech">
+                `;
+                
+                project.technologies.forEach(tech => {
+                    modalContent += `<span class="tag">${tech}</span>`;
+                });
+                
+                modalContent += `</div></div>`;
+                
+                // Add features and challenges in a grid
+                modalContent += `
+                    <div class="modal-content-grid">
+                        <div class="modal-features">
+                            <h4><i class="fas fa-star"></i> Key Features</h4>
+                            <ul>
+                `;
+                
+                project.features.forEach(feature => {
+                    modalContent += `<li>${feature}</li>`;
+                });
+                
+                modalContent += `
+                            </ul>
+                        </div>
+                        <div class="modal-challenges">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Challenges & Solutions</h4>
+                            <ul>
+                `;
+                
+                project.challenges.forEach(challenge => {
+                    modalContent += `<li>${challenge}</li>`;
+                });
+                
+                modalContent += `
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                
+                // Add links if available
+                if (project.links && project.links.length > 0) {
+                    modalContent += `
+                        <div class="modal-section">
+                            <h4><i class="fas fa-external-link-alt"></i> Project Links</h4>
+                            <div class="modal-links">
+                    `;
+                    
+                    project.links.forEach(link => {
+                        modalContent += `
+                            <a href="${link.url}" target="_blank" rel="noopener">
+                                <i class="${link.icon}"></i> ${link.text}
+                            </a>
+                        `;
+                    });
+                    
+                    modalContent += `</div></div>`;
+                }
+                
+                modalBody.innerHTML = modalContent;
+                modalBackdrop.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                
+                // Add video player functionality
+                const videoPlaceholder = modalBody.querySelector('.video-placeholder');
+                if (videoPlaceholder) {
+                    videoPlaceholder.addEventListener('click', function() {
+                        const videoUrl = this.getAttribute('data-video-url');
+                        const videoContainer = this.parentElement;
+                        
+                        // Replace placeholder with video player
+                        videoContainer.innerHTML = `
+                            <video class="video-player" controls>
+                                <source src="${videoUrl}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-controls">
+                                <button class="play-pause"><i class="fas fa-play"></i></button>
+                                <div class="video-progress">
+                                    <div class="video-progress-filled"></div>
+                                </div>
+                                <button class="fullscreen"><i class="fas fa-expand"></i></button>
+                            </div>
+                        `;
+                        
+                        // Add custom video controls
+                        const video = videoContainer.querySelector('.video-player');
+                        const playPauseBtn = videoContainer.querySelector('.play-pause');
+                        const progress = videoContainer.querySelector('.video-progress');
+                        const progressFilled = videoContainer.querySelector('.video-progress-filled');
+                        const fullscreenBtn = videoContainer.querySelector('.fullscreen');
+                        
+                        // Play/Pause functionality
+                        playPauseBtn.addEventListener('click', () => {
+                            if (video.paused) {
+                                video.play();
+                                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                            } else {
+                                video.pause();
+                                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                            }
+                        });
+                        
+                        // Update progress bar
+                        video.addEventListener('timeupdate', () => {
+                            const percent = (video.currentTime / video.duration) * 100;
+                            progressFilled.style.width = `${percent}%`;
+                        });
+                        
+                        // Seek functionality
+                        progress.addEventListener('click', (e) => {
+                            const pos = (e.pageX - progress.offsetLeft) / progress.offsetWidth;
+                            video.currentTime = pos * video.duration;
+                        });
+                        
+                        // Fullscreen functionality
+                        fullscreenBtn.addEventListener('click', () => {
+                            if (!document.fullscreenElement) {
+                                videoContainer.requestFullscreen().catch(err => {
+                                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                                });
+                            } else {
+                                document.exitFullscreen();
+                            }
+                        });
+                        
+                        // Update play/pause button when video ends
+                        video.addEventListener('ended', () => {
+                            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        });
+                    });
+                }
+                
+                // Focus on close button for accessibility
+                setTimeout(() => {
+                    modalBackdrop.querySelector('.modal-close').focus();
+                }, 100);
+            }
+            
+            function closeModal() {
+                modalBackdrop.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            
+            modalBackdrop.querySelector('.modal-close').addEventListener('click', closeModal);
+            
+            modalBackdrop.addEventListener('click', (e) => {
+                if (e.target === modalBackdrop) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalBackdrop.classList.contains('show')) {
+                    closeModal();
+                }
+            });
+            
+            // Add click handlers to project cards
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const projectId = btn.getAttribute('data-project-id');
+                    openProjectModal(projectId);
+                });
+            });
+            
+            // Add keyboard navigation to project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.setAttribute('tabindex', '0');
+                
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const projectId = card.getAttribute('data-project-id');
+                        openProjectModal(projectId);
+                    }
+                });
+            });
+            
+            // Animate skill bars on scroll
+            function animateSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-fill');
+                
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+            }
+            
+            // Use Intersection Observer to animate skill bars when they come into view
+            const skillsSection = document.getElementById('skills');
+            
+            if (skillsSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateSkillBars();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                
+                observer.observe(skillsSection);
+            }
+            
+            // Add print styles dynamically
+            const printStyle = document.createElement('style');
+            printStyle.textContent = `
+                @media print {
+                    .topbar, #backToTop, .btn, .hamburger, .mobile-menu, .overlay {
+                        display: none !important;
+                    }
+                    
+                    section {
+                        box-shadow: none;
+                        margin: 20px 0;
+                        page-break-inside: avoid;
+                    }
+                    
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    
+                    .contact-pill {
+                        background: transparent;
+                        border: 1px solid var(--dark);
+                        color: var(--dark);
+                    }
+                    
+                    header {
+                        background: var(--primary) !important;
+                        -webkit-print-color-adjust: exact;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyle);
+        });
+    </script>
+</body>
+</html>
